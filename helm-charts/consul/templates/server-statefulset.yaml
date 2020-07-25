@@ -41,7 +41,7 @@ spec:
       annotations:
         "consul.hashicorp.com/connect-inject": "false"
         {{- if .Values.server.annotations }}
-          {{- tpl .Values.server.annotations . | nindent 8 }}
+        {{ tpl .Values.server.annotations . | nindent 8 }}
         {{- end }}
     spec:
     {{- if .Values.server.affinity }}
@@ -239,6 +239,7 @@ spec:
                 - |
                   {{- if .Values.global.tls.enabled }}
                   curl \
+                    -k \
                     --cacert /consul/tls/ca/tls.crt \
                     https://127.0.0.1:8501/v1/status/leader \
                   {{- else }}
