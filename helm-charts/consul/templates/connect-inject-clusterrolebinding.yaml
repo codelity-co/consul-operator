@@ -14,6 +14,6 @@ roleRef:
   name: {{ template "consul.fullname" . }}-connect-injector-webhook
 subjects:
   - kind: ServiceAccount
-    name: {{ template "consul.fullname" . }}-connect-injector-webhook-svc-account
+    name: {{ template "consul.fullname" . }}-connect-injector-sa
     namespace: {{ .Release.Namespace }}
 {{- end }}

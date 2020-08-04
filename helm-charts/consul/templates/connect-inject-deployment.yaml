@@ -31,7 +31,7 @@ spec:
         "consul.hashicorp.com/connect-inject": "false"
     spec:
   {{- if not .Values.connectInject.certs.secretName }}
-      serviceAccountName: {{ template "consul.fullname" . }}-connect-injector-webhook-svc-account
+      serviceAccountName: {{ template "consul.fullname" . }}-connect-injector-sa
   {{- end }}
       containers:
         - name: sidecar-injector
