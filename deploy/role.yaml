@@ -4,55 +4,72 @@ metadata:
   creationTimestamp: null
   name: consul-operator
 rules:
-- apiGroups:
-  - ""
-  resources:
-  - configmaps
-  - secrets
-  verbs:
-  - '*'
-- apiGroups:
-  - ""
-  resources:
-  - events
-  verbs:
-  - create
-- apiGroups:
-  - ""
-  resources:
-  - configmaps
-  - serviceaccounts
-  - services
-  verbs:
-  - '*'
-- apiGroups:
-  - apps
-  resources:
-  - daemonsets
-  - statefulsets
-  verbs:
-  - '*'
-- apiGroups:
-  - ""
-  resources:
-  - pods
-  verbs:
-  - get
-- apiGroups:
-  - charts.helm.k8s.io
-  resources:
-  - '*'
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - batch
-  resources:
-  - '*'
-  verbs:
-  - '*'
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list", "create", "update", "delete", "patch"]
+
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["get", "watch", "list", "create", "update", "delete", "patch"]
+
+- apiGroups: [""]
+  resources: ["serviceaccounts"]
+  verbs: ["get", "watch", "list", "create", "update", "delete", "patch"]
+
+- apiGroups: [""]
+  resources: ["configmaps", "secrets"]
+  verbs: ["get", "watch", "list", "create", "update", "delete", "patch"]
+
+- apiGroups: [""]
+  resources: ["persistentvolumeclaims"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]  
+
+- apiGroups: [""]
+  resources: ["events"]
+  verbs: ["create"]
+  
+- apiGroups: [""]
+  resources: ["namespaces"]
+  verbs: ["get"]
+
+- apiGroups: ["apps"]
+  resources: ["daemonsets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+
+- apiGroups: ["apps"]
+  resourceNames: ["consul-operator"]
+  resources: ["deployments/finalizers"]
+  verbs: ["update"]
+
+- apiGroups: ["apps"]
+  resources: ["replicasets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+
+- apiGroups: ["apps"]
+  resources: ["statefulsets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+
+- apiGroups: ["batch"]
+  resources: ["jobs"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+  
+- apiGroups: ["policy"]
+  resources: ["poddisruptionbudgets"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+
+- apiGroups: ["monitoring.coreos.com"]
+  resources: ["servicemonitors"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+
+- apiGroups: ["rbac.authorization.k8s.io"]
+  resources: ["roles", "rolebindings"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+
+- apiGroups: ["helm.operator-sdk"]
+  resources: ["consul", "consul/status"]
+  verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
+
