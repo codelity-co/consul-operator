@@ -1,9 +1,9 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: consuls.charts.helm.k8s.io
+  name: consuls.helm.operator-sdk
 spec:
-  group: charts.helm.k8s.io
+  group: helm.operator-sdk
   names:
     kind: Consul
     listKind: ConsulList
