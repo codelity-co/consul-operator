@@ -70,6 +70,6 @@ rules:
   verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
 
 - apiGroups: ["helm.operator-sdk"]
-  resources: ["consul", "consul/status"]
+  resources: ["consuls", "consuls/status"]
   verbs: ["get", "list", "watch", "create", "update", "delete", "patch"]
 
