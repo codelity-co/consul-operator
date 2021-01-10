@@ -1,0 +1,3 @@
+[submodule "helm-charts/consul-helm"]
+	path = helm-charts/consul-helm
+	url = git@github.com:codelity-co/consul-helm.git
