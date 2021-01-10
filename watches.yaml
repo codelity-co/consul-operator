@@ -2,4 +2,4 @@
 - version: v1alpha1
   group: helm.operator-sdk
   kind: Consul
-  chart: helm-charts/consul
+  chart: helm-charts/consul-helm
